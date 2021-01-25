@@ -131,9 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = {
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'templates/static')
-}
+]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
@@ -141,7 +141,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permission.IsAuthenticated'
+        'rest_framework.permissions.IsAuthenticated'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication'
@@ -150,6 +150,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 3
 }
 
+# Cross Origin allow
 CROSS_ORIGIN_ALLOW_ALL = True
-
+# File Upload Permission
 FILE_UPLOAD_PERMISSIONS = 0o640
+# For Custom User Model
+AUTH_USER_MODEL = 'accounts.UserAccount'
